@@ -1,4 +1,4 @@
-const eventDateUTC = new Date(Date.UTC(2024, 11, 16, 10, 20, 0)); // new Date("2024-12-16T07:00:00+06:00").getTime();
+/*const eventDateUTC = new Date(Date.UTC(2024, 11, 16, 10, 20, 0)); // new Date("2024-12-16T07:00:00+06:00").getTime();
 // Note: Month is 0-indexed, so 11 = December
 
 function updateCountdown() {
@@ -34,7 +34,7 @@ document.body.pointerEvents = "auto";
 function ShowTimerDiv(){
 document.getElementById("TimerDiv").style.display = "flex";
 document.body.pointerEvents = "none";
-}
+}*/
 
 
 function getLocalTime() {
@@ -61,3 +61,32 @@ document.getElementById("Time").textContent = ` Local Time: ${getLocalTime()}`;
 
 // Update the time every second
 setInterval(updateTime, 10);
+
+function startCountdown() {
+    // Event time in GMT+6 (January 19, 2025 at 7:00 AM)
+    const eventTime = new Date('2025-01-19T07:00:00+06:00');
+
+    // Get current time and convert it to GMT+6
+    const currentTime = new Date();
+    const userTimeInGMTPlus6 = new Date(currentTime.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+
+    // Calculate the difference in milliseconds
+    const timeLeft = eventTime - userTimeInGMTPlus6;
+
+    // If the event time is in the future
+    if (timeLeft > 0) {
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Display the countdown in the "Time" element
+        document.getElementById("Time").innerHTML = `Time Left Till Event: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        document.getElementById("Time").innerHTML = "Event Started!";
+    }
+}
+
+// Update the countdown every second
+setInterval(startCountdown, 1000);
