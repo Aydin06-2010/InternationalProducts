@@ -63,15 +63,16 @@ document.getElementById("Time").textContent = ` Local Time: ${getLocalTime()}`;
 setInterval(updateTime, 10);
 
 function startCountdown() {
-    // Event time in GMT+6 (January 19, 2025 at 7:00 AM)
-    const eventTime = new Date('2025-01-19T07:00:00+06:00');
+    // Event time in GMT+6 (January 19, 2025 at 7:00 AM GMT+6)
+    const eventTime = new Date('2025-01-19T07:00:00+06:00').getTime();
 
-    // Get current time and convert it to GMT+6
-    const currentTime = new Date();
-    const userTimeInGMTPlus6 = new Date(currentTime.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+    // Get current UTC time and convert it to GMT+6
+    const currentTimeUTC = new Date().getTime(); // UTC time in milliseconds
+    const offsetInMilliseconds = 6 * 60 * 60 * 1000; // GMT+6 offset in milliseconds
+    const currentTimeInGMTPlus6 = currentTimeUTC + offsetInMilliseconds;
 
     // Calculate the difference in milliseconds
-    const timeLeft = eventTime - userTimeInGMTPlus6;
+    const timeLeft = eventTime - currentTimeInGMTPlus6;
 
     // If the event time is in the future
     if (timeLeft > 0) {
