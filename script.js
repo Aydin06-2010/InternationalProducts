@@ -82,9 +82,9 @@ function startCountdown() {
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown in the "Time" element
-        document.getElementById("Time").innerHTML = `Time Left Till Event: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        document.getElementById("countdown").innerHTML = `Time Left Till Event: ${days}d ${hours}h ${minutes}m ${seconds}s`;
     } else {
-        document.getElementById("Time").innerHTML = "Event Started!";
+        document.getElementById("countdown").innerHTML = "Event Started!";
     }
 }
 
