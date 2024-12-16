@@ -1,4 +1,4 @@
-const eventDateUTC = new Date("2025-1-19T10:00:00+06:00").getTime();
+const eventDateUTC = new Date("2025-01-19T10:00:00+06:00").getTime();
 // Note: Month is 0-indexed, so 11 = December
 
 function updateCountdown() {
