@@ -63,16 +63,14 @@ document.getElementById("Time").textContent = ` Local Time: ${getLocalTime()}`;
 setInterval(updateTime, 10);
 
 function startCountdown() {
-    // Event time in GMT+6 (January 19, 2025 at 7:00 AM GMT+6)
-    const eventTime = new Date('2025-01-19T07:00:00+06:00').getTime(); // Event time in milliseconds (already in GMT+6)
+    // Event time in GMT+6: January 19, 2025 at 7:00 AM (converted to UTC)
+    const eventTimeInUTC = new Date('2025-01-19T01:00:00Z').getTime(); // Event time in UTC (7:00 AM GMT+6 is 01:00 AM UTC)
 
-    // Get current UTC time and convert it to GMT+6
-    const currentTimeUTC = new Date().getTime(); // Current UTC time in milliseconds
-    const offsetInMilliseconds = 6 * 60 * 60 * 1000; // GMT+6 offset in milliseconds
-    const currentTimeInGMTPlus6 = currentTimeUTC + offsetInMilliseconds; // Current time adjusted to GMT+6
+    // Get current UTC time
+    const currentTimeInUTC = new Date().getTime(); // Current UTC time in milliseconds
 
     // Calculate the difference in milliseconds
-    const timeLeft = eventTime - currentTimeInGMTPlus6;
+    const timeLeft = eventTimeInUTC - currentTimeInUTC;
 
     // If the event time is in the future
     if (timeLeft > 0) {
@@ -83,9 +81,9 @@ function startCountdown() {
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown in the "Time" element
-        document.getElementById("countdown").innerHTML = `Time Left Till Event: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        document.getElementById("Time").innerHTML = `Time Left Till Event: ${days}d ${hours}h ${minutes}m ${seconds}s`;
     } else {
-        document.getElementById("countdown").innerHTML = "Event Started!";
+        document.getElementById("Time").innerHTML = "Event Started!";
     }
 }
 
