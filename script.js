@@ -1,4 +1,4 @@
-const eventDateUTC = new Date("2024-12-16T15:40:00+06:00").getTime();
+const eventDateUTC = new Date(Date.UTC(2024, 11, 16, 10, 0, 0)); //new Date("2024-12-16T15:40:00+06:00").getTime();
 function updateCountdown() {
 const nowUTC = new Date().getTime();
 const distance = eventDateUTC - nowUTC;
