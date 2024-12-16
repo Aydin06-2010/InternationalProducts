@@ -1,4 +1,6 @@
-const eventDateUTC = new Date("2025-01-19T10:00:00+06:00").getTime();
+//const eventDateUTC = new Date("2025-01-19T10:00:00+06:00").getTime();
+const eventDateUTC = new Date(Date.UTC(2025, 1, 19, 1, 0, 0)); // new Date("2024-12-16T07:00:00+06:00").getTime();
+
 function updateCountdown() {
 // Get the current UTC time
 const nowUTC = new Date().getTime();
