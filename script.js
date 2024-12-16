@@ -64,12 +64,12 @@ setInterval(updateTime, 10);
 
 function startCountdown() {
     // Event time in GMT+6 (January 19, 2025 at 7:00 AM GMT+6)
-    const eventTime = new Date('2025-01-19T07:00:00+06:00').getTime();
+    const eventTime = new Date('2025-01-19T07:00:00+06:00').getTime(); // Event time in milliseconds (already in GMT+6)
 
     // Get current UTC time and convert it to GMT+6
-    const currentTimeUTC = new Date().getTime(); // UTC time in milliseconds
+    const currentTimeUTC = new Date().getTime(); // Current UTC time in milliseconds
     const offsetInMilliseconds = 6 * 60 * 60 * 1000; // GMT+6 offset in milliseconds
-    const currentTimeInGMTPlus6 = currentTimeUTC + offsetInMilliseconds;
+    const currentTimeInGMTPlus6 = currentTimeUTC + offsetInMilliseconds; // Current time adjusted to GMT+6
 
     // Calculate the difference in milliseconds
     const timeLeft = eventTime - currentTimeInGMTPlus6;
