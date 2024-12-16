@@ -1,6 +1,4 @@
 const eventDateUTC = new Date("2025-01-19T10:00:00+06:00").getTime();
-// Note: Month is 0-indexed, so 11 = December
-
 function updateCountdown() {
 // Get the current UTC time
 const nowUTC = new Date().getTime();
@@ -35,7 +33,6 @@ function ShowTimerDiv(){
 document.getElementById("TimerDiv").style.display = "flex";
 document.body.pointerEvents = "none";
 }
-
 
 function getLocalTime() {
 const now = new Date();
